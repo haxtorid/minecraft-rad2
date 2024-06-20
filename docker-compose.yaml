@@ -1,0 +1,32 @@
+version: "3.9"
+# key course forge =$2a$10$XBnca4ZMuIXvw6t.t1tBUuclvjtdGGqS8sXbAQelRg/3Csx0XGTHu
+services:
+  mc:
+    container_name: minecraft_rad
+    image: itzg/minecraft-server:java8-multiarch
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
+    environment:
+      EULA: "true"
+      TYPE: FORGE
+      FORGE_VERSION: "36.2.42"
+      VERSION: "1.16.5"
+      ONLINE_MODE: "false"
+      VIEW_DISTANCE: 6
+      DIFFICULTY: normal
+      ENABLE_COMMAND_BLOCK: true
+      MODE: survival
+      PVP: false
+      LEVEL: WORLD-1
+      SEED: "-7736475818865578203"
+      MEMORY: '4G'
+      MAX_MEMORY: '6G'
+    ports:
+      - "23620:25565"
+    volumes:
+      - ./data:/data
+    stdin_open: true
+    tty: true
+volumes:
+  data:
